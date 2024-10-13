@@ -13,6 +13,8 @@ struct NavBar: View {
     let search: Bool
     let settings: Bool
     
+    let back: Bool
+    
     let title: String
     let destination: AnyView // Use AnyView to allow flexibility
     
@@ -24,13 +26,26 @@ struct NavBar: View {
 
     var body: some View {
         ZStack{
-            Color(Color.white).ignoresSafeArea()
             
             VStack {
                 // Top Navigation Bar
                 
                 if topNavBar{
                     HStack {
+                        
+                        if back {
+                            Button(action: {
+                                // Dismiss the current view
+                                presentationMode.wrappedValue.dismiss()
+                            }) {
+                                HStack {
+                                    Image(systemName: "chevron.left") // Back arrow icon
+                                        .font(.title).foregroundStyle(Color("TextColor"))
+                                }
+                            }
+                        }
+                        
+                        
                         if title != "" {
                             Text(title)
                                 .font(.title)
@@ -54,14 +69,21 @@ struct NavBar: View {
                                     .frame(height: 40.0)
                                     .focused($isSearching)
                                 Spacer()
-                                
                             }
-                            .background(Color("TextColor").opacity(0.15))
+                            .background(Color("TextColor").opacity(0.10))
                             .cornerRadius(20)
                             .padding(.horizontal, 3)
                         }
                         
-                        Image(systemName: "gearshape").foregroundStyle(Color("TextColor")).font(.title3)
+                        if settings {
+                            NavigationLink {
+                                SettingsView()
+                            } label: {
+                                Image(systemName: "gearshape").foregroundStyle(Color("TextColor")).font(.title3)
+                            }
+                        }
+
+                    
                     }
                     .padding()
                     .background(.ultraThinMaterial)
@@ -79,10 +101,9 @@ struct NavBar: View {
                             
                             Image(systemName: "magnifyingglass")
                             Spacer()
-                            NavigationLink(destination: destination) {
-                                Image(systemName: "plus.circle")
-                                    .font(.largeTitle)
-                            }
+                            
+                            Image(systemName: "airplane.departure")
+                                .font(.largeTitle)
                             Spacer()
                             
                             Image(systemName: "bookmark")
@@ -104,6 +125,6 @@ struct NavBar: View {
 
 #Preview {
     NavigationStack {
-        NavBar(topNavBar:true,bottomNavBar:true,search:true,settings:true,title: "Discover", destination: AnyView(EmptyView()))
+        NavBar(topNavBar:true,bottomNavBar:true,search:true,settings:true,back:true,title: "Discover", destination: AnyView(EmptyView()))
     }
 }
