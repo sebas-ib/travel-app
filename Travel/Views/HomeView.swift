@@ -9,19 +9,34 @@ import SwiftUI
 
 
 struct HomeView: View {
-    var body:some View {
-        NavigationStack{
-            ZStack{
-                
+    @Binding var path: [AppView]
+    
+    var body: some View {
+        NavigationStack {
+            ZStack {
                 Color("BackgroundColor").ignoresSafeArea()
-                                
-                NavBar(topNavBar: true, bottomNavBar: true, search: false, settings: true, back:false,title: "Discover", destination: AnyView(EmptyView()))
+                
+                VStack {
+                    Text("Hit")
+                }
+                
+                
+
+                
+                // Your custom navigation bar
+                NavBar(topNavBar: true, bottomNavBar: true, search: false, settings: true, back:false,title: "Discover")
             }
+            .navigationBarBackButtonHidden(true) // Hide the default back button
         }
         
     }
 }
 
-#Preview {
-    HomeView()
+// Preview struct
+struct HomeView_Previews: PreviewProvider {
+    @State static var path: [AppView] = [] // Static variable for preview
+    
+    static var previews: some View {
+        HomeView(path: $path) // Pass the binding to the preview
+    }
 }

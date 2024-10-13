@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path: [AppView] = []
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        
+            HomeView(path: $path)
+                .navigationDestination(for: AppView.self) { view in
+                    switch view {
+                    case .home:
+                        HomeView(path: $path)
+                    }
+                }
+        
     }
 }
 
