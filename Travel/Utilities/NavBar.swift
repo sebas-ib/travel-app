@@ -33,14 +33,15 @@ struct NavBar: View {
                 if topNavBar{
                     HStack {
                         
-                        
-                        Button(action: {
-                            // Dismiss the current view
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            HStack {
-                                Image(systemName: "chevron.left") // Back arrow icon
-                                    .font(.title).foregroundStyle(Color("TextColor"))
+                        if back {
+                            Button(action: {
+                                // Dismiss the current view
+                                presentationMode.wrappedValue.dismiss()
+                            }) {
+                                HStack {
+                                    Image(systemName: "chevron.left") // Back arrow icon
+                                        .font(.title).foregroundStyle(Color("TextColor"))
+                                }
                             }
                         }
                         

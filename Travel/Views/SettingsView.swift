@@ -22,11 +22,8 @@ struct SettingsView: View {
                         Text("Friend Requests")
                         Text("Upload Settings")
                         Text("Appearance")
-
-                        
-                    }.safeAreaPadding(.vertical, 50)
-                    
-                    
+                    }.scrollContentBackground(.hidden)
+                    .safeAreaPadding(.vertical, 50)
                 }
                 
                 
