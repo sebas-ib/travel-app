@@ -11,6 +11,7 @@ struct NavBar: View {
     let topNavBar: Bool
     let bottomNavBar: Bool
     let search: Bool
+    let settings: Bool
     
     let title: String
     let destination: AnyView // Use AnyView to allow flexibility
@@ -22,47 +23,55 @@ struct NavBar: View {
 
 
     var body: some View {
-        VStack {
-            // Top Navigation Bar
+        ZStack{
+            Color(Color.white).ignoresSafeArea()
             
-            if topNavBar{
-                HStack {
-                    if title != "" {
-                        Text(title)
-                            .font(.title)
-                            .foregroundColor(Color.white)
-                        Spacer()
-                    }
-                    
-                    if search {
-                        HStack(alignment: .center){
-                            Image(systemName: "magnifyingglass")
-                                .foregroundStyle(Color.white)
-                                .padding(.leading, 10)
-                                .font(.title3)
-                            
-                            TextField("", text: $searchText)
-                                .font(.headline)
-                                .fontWeight(.light)
-                                .frame(height: 40.0)
-                                .focused($isSearching)
+            VStack {
+                // Top Navigation Bar
+                
+                if topNavBar{
+                    HStack {
+                        if title != "" {
+                            Text(title)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color("TextColor"))
                             Spacer()
                             
+                            
                         }
-                        .background(Color.white.opacity(0.25))
-                        .cornerRadius(20)
-                        .padding(.horizontal, 3)
+                        
+                        if search {
+                            HStack(alignment: .center){
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundStyle(Color("TextColor"))
+                                    .padding(.leading, 10)
+                                    .font(.title3)
+                                
+                                TextField("", text: $searchText)
+                                    .font(.headline)
+                                    .fontWeight(.light)
+                                    .frame(height: 40.0)
+                                    .focused($isSearching)
+                                Spacer()
+                                
+                            }
+                            .background(Color("TextColor").opacity(0.15))
+                            .cornerRadius(20)
+                            .padding(.horizontal, 3)
+                        }
+                        
+                        Image(systemName: "gearshape").foregroundStyle(Color("TextColor")).font(.title3)
                     }
+                    .padding()
+                    .background(.ultraThinMaterial)
                 }
-                .padding()
-                .background(Color.black)
-            }
-
-            Spacer() // Spacer to push content away
-            
-            // Bottom Navigation Bar
-            if bottomNavBar {
-                HStack {
+                
+                Spacer() // Spacer to push content away
+                
+                // Bottom Navigation Bar
+                if bottomNavBar {
+                    HStack {
                         HStack{
                             Spacer()
                             Image(systemName: "house")
@@ -75,16 +84,17 @@ struct NavBar: View {
                                     .font(.largeTitle)
                             }
                             Spacer()
-
+                            
                             Image(systemName: "bookmark")
                             Spacer()
                             
                             Image(systemName: "person")
                             Spacer()
-                        }.foregroundStyle(Color.white).font(.title3)
+                        }.foregroundStyle(Color("TextColor")).font(.title3)
+                    }
+                    .padding(.top)
+                    .background(.ultraThinMaterial)
                 }
-                .padding(.top)
-                .background(Color.black)
             }
         }
     }
@@ -94,6 +104,6 @@ struct NavBar: View {
 
 #Preview {
     NavigationStack {
-        NavBar(topNavBar:true,bottomNavBar:true,search:true,title: "Discover", destination: AnyView(EmptyView()))
+        NavBar(topNavBar:true,bottomNavBar:true,search:true,settings:true,title: "Discover", destination: AnyView(EmptyView()))
     }
 }
