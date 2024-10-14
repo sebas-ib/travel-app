@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct AccountView: View {
+struct SearchView: View {
     
     var body: some View {
         ZStack {
             Color("BackgroundColor").ignoresSafeArea()
             
-            Text("Account")
+            Text("Search")
         }
     }
 }
 
 #Preview {
-    AccountView()
+    SearchView()
 }
