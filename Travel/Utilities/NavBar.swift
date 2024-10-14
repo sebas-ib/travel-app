@@ -88,9 +88,8 @@ struct NavBar: View {
                 
                 HStack {
                     Spacer()
-                    
-                }.padding(.top)
-                    .background(.ultraThinMaterial)
+                }.padding(.vertical, 5.0)
+                .background(.ultraThinMaterial)
             }
         }
     }

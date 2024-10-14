@@ -11,7 +11,7 @@ struct AccountView: View {
     var body: some View {
         ZStack {
             
-            Color("BackgroundColor").ignoresSafeArea()
+            Color(.green).ignoresSafeArea()
             
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Account")
             

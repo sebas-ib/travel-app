@@ -11,7 +11,7 @@ struct CreateView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor").ignoresSafeArea()
+            Color(.blue).ignoresSafeArea()
             
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "New Trip")
         }

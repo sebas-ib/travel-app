@@ -10,7 +10,7 @@ import SwiftUI
 struct SavedView: View {
     var body: some View {
         ZStack{
-            Color("BackgroundColor").ignoresSafeArea()
+            Color(.orange).ignoresSafeArea()
             
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Saved")
         }

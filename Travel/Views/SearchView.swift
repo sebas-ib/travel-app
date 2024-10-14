@@ -11,7 +11,7 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor").ignoresSafeArea()
+            Color(.purple).ignoresSafeArea()
             
             NavBar(topNavBar: true, search: true, settings: true, back: false, title: "")
         }

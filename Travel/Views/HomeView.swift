@@ -13,7 +13,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor").ignoresSafeArea()
+            Color(.yellow).ignoresSafeArea()
             
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Discover")
             
