@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  CreateView.swift
 //  Travel
 //
 //  Created by Sebastian Ibarra on 10/13/24.
@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-
-struct HomeView: View {
-    @State private var text = ""
+struct CreateView: View {
     
     var body: some View {
         ZStack {
@@ -68,9 +66,7 @@ struct HomeView: View {
             
             
             
-            NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Discover")
-            
+            NavBar(topNavBar: true, search: false, settings: true, back: false, title: "New Trip")
         }
-
     }
 }

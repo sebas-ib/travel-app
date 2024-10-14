@@ -9,15 +9,53 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            TabView {
+                Group {
+                    HomeView()
+                        .tabItem {
+                            Image("home")
+                                .renderingMode(.template)
+                            
+                        }
+                    SearchView()
+                        .tabItem {
+                            Image("magnifingglass")
+                                .renderingMode(.template)
+                        }
+                    
+                    CreateView()
+                        .tabItem {
+                            Image("airplane")
+                                .renderingMode(.template)
+                            
+                        }
+                    
+                    SavedView()
+                        .tabItem {
+                            Image("bookmark")
+                                .renderingMode(.template)
+                            
+                        }
+                    
+                    AccountView()
+                        .tabItem {
+                            Image("person")
+                                .renderingMode(.template)
+                            
+                        }
+                }
+                .toolbarBackground(.ultraThinMaterial, for: .tabBar)
+                .toolbarBackground(.visible,for: .tabBar)
+            }
         }
-        .padding()
+        .accentColor(Color("TextColor"))
     }
 }
+
+
+
+
 
 #Preview {
     ContentView()
