@@ -8,10 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
-
     var body: some View {
         NavigationStack{
-            NavBar(topNavBar: true, bottomNavBar: true, search: false, settings: true, back: false, title: "Discover")
+            TabView {
+                Group{
+                    HomeView()
+                        .tabItem {
+                            Image(systemName: "house")
+                        }
+                    
+                    SearchView()
+                        .tabItem {
+                            Image(systemName: "magnifyingglass")
+                        }
+                    
+                    CreateView()
+                        .tabItem {
+                            Image(systemName: "airplane.departure")
+
+                        }
+                    
+                    SavedView()
+                        .tabItem {
+                            Image(systemName: "bookmark")
+                        }
+                    
+                    AccountView()
+                        .tabItem {
+                            Image(systemName: "person")
+                        }
+                }
+            }
+            .accentColor(Color("TextColor")) // Customize tab bar item color
         }
     }
 }

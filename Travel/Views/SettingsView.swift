@@ -7,16 +7,20 @@
 import SwiftUI
 
 struct SettingsView: View {
-
+    
     
     // Access the presentation mode to handle view dismissal
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor").ignoresSafeArea()
+            
+            
+            NavBar(topNavBar: true, search: false, settings: false, back: true, title: "Settings")
+            
             VStack {
-
+                
                 // Your view content goes here
                 List{
                     Text("Account")
@@ -24,9 +28,9 @@ struct SettingsView: View {
                     Text("Upload Settings")
                     Text("Appearance")
                 }.scrollContentBackground(.hidden)
-                .safeAreaPadding(.top, 50)
+                    .safeAreaPadding(.top, 50)
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct NavBar: View {
-
-
+    
+    
     let topNavBar: Bool
-    let bottomNavBar: Bool
     let search: Bool
     let settings: Bool
     
@@ -23,14 +22,11 @@ struct NavBar: View {
     @FocusState private var isSearching: Bool
     
     @Environment(\.presentationMode) var presentationMode // Access to presentation mode
-
-
+    
+    
     var body: some View {
         ZStack{
-            
             VStack {
-                // Top Navigation Bar
-                
                 if topNavBar{
                     HStack {
                         
@@ -64,8 +60,6 @@ struct NavBar: View {
                                     .font(.title3)
                                 
                                 TextField("", text: $searchText)
-                                    .font(.headline)
-                                    .fontWeight(.light)
                                     .frame(height: 40.0)
                                     .focused($isSearching)
                                 Spacer()
@@ -89,41 +83,16 @@ struct NavBar: View {
                     .background(.ultraThinMaterial)
                 }
                 
-                Spacer() // Spacer to push content away
+                Spacer()
                 
-                // Bottom Navigation Bar
-                if bottomNavBar {
-                    HStack {
-                        HStack{
-                            Spacer()
-                            Image(systemName: "house")
-                            Spacer()
-                            
-                            Image(systemName: "magnifyingglass")
-                            Spacer()
-                            
-                            Image(systemName: "airplane.departure")
-                                .font(.largeTitle)
-                            Spacer()
-                            
-                            Image(systemName: "bookmark")
-                            Spacer()
-                            
-                            
-                            Image(systemName: "person")
-                            Spacer()
-                            
-                        }.foregroundStyle(Color("TextColor")).font(.title3)
-                    }
-                    .padding(.top)
-                    .background(.ultraThinMaterial)
-                }
             }
         }
     }
 }
 
 
+
+
 #Preview {
-    NavBar(topNavBar: true, bottomNavBar: true, search: true, settings: true, back: true, title: "Discover")
+    NavBar(topNavBar: true, search: true, settings: true, back: true, title: "Discover")
 }

@@ -1,5 +1,5 @@
 //
-//  AccountView.swift
+//  SavedView.swift
 //  Travel
 //
 //  Created by Sebastian Ibarra on 10/13/24.
@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-struct SearchView: View {
-    
+struct SavedView: View {
     var body: some View {
-        ZStack {
+        ZStack{
             Color("BackgroundColor").ignoresSafeArea()
             
-            NavBar(topNavBar: true, search: true, settings: true, back: false, title: "")
+            NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Saved")
         }
     }
 }
 
 #Preview {
-    SearchView()
+    SavedView()
 }

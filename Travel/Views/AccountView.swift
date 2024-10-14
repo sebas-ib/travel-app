@@ -9,13 +9,12 @@ import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        VStack {
+        ZStack {
             
             Color("BackgroundColor").ignoresSafeArea()
-            Text("Account") // Displays the message
-                .font(.largeTitle)
-                .padding()
-
+            
+            NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Account")
+            
         }
     }
 }
