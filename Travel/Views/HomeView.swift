@@ -15,55 +15,23 @@ struct HomeView: View {
         ZStack {
             
             Color("BackgroundColor").ignoresSafeArea()
-
+            
             VStack{
                 ScrollView(.vertical) {
                     HStack{
                         Spacer()
-                        VStack{
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            
+                        VStack(spacing: 15.0){
+                            LargePlaceView(image: Image("paris"),place: "France",tripsCount: 432)
+                            LargePlaceView(image: Image("unitedstates"),place: "The United States",tripsCount: 231)
+                            LargePlaceView(image:Image("germany"),place:"Germany",tripsCount: 634)
+                            LargePlaceView(image: Image("belgium"),place: "Belgium",tripsCount: 857)
                         }
                         Spacer()
                     }
                 }
-            }.safeAreaPadding(.vertical,75)
+            }
+            .safeAreaPadding(.top,75)
+            .safeAreaPadding(.bottom,30)
             
             
             
@@ -71,6 +39,6 @@ struct HomeView: View {
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Discover")
             
         }
-
+        
     }
 }
