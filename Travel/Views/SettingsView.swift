@@ -15,10 +15,6 @@ struct SettingsView: View {
     var body: some View {
         ZStack {
             Color("BackgroundColor").ignoresSafeArea()
-            
-            
-            NavBar(topNavBar: true, search: false, settings: false, back: true, title: "Settings")
-            
             VStack {
                 
                 // Your view content goes here
@@ -30,6 +26,9 @@ struct SettingsView: View {
                 }.scrollContentBackground(.hidden)
                     .safeAreaPadding(.top, 50)
             }
+            
+            NavBar(topNavBar: true, search: false, settings: false, back: true, title: "Settings")
+            
         }.navigationBarBackButtonHidden(true)
     }
 }

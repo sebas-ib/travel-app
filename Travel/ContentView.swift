@@ -10,38 +10,51 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack{
-            TabView {
-                Group{
-                    HomeView()
-                        .tabItem {
-                            Image(systemName: "house")
-                        }
-                    
-                    SearchView()
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-                        }
-                    
-                    CreateView()
-                        .tabItem {
-                            Image(systemName: "airplane.departure")
-
-                        }
-                    
-                    SavedView()
-                        .tabItem {
-                            Image(systemName: "bookmark")
-                        }
-                    
-                    AccountView()
-                        .tabItem {
-                            Image(systemName: "person")
-                        }
+            ZStack{
+                TabView {
+                    Group{
+                        
+                        HomeView()
+                            .tabItem {
+                                Image("home")
+                                    .renderingMode(.template)
+                                
+                            }
+                        
+                        SearchView()
+                            .tabItem {
+                                Image("magnifingglass")
+                                    .renderingMode(.template)
+                            }
+                        
+                        CreateView()
+                            .tabItem {
+                                Image("airplane")
+                                    .renderingMode(.template)
+                                
+                            }
+                        
+                        SavedView()
+                            .tabItem {
+                                Image("bookmark")
+                                    .renderingMode(.template)
+                                
+                            }
+                        
+                        AccountView()
+                            .tabItem {
+                                Image("person")
+                                    .renderingMode(.template)
+                                
+                            }
+                    }
                 }
+                .accentColor(Color("TextColor"))
+                // Customize tab bar item color
             }
-            .accentColor(Color("TextColor")) // Customize tab bar item color
         }
     }
+    
 }
 
 

@@ -26,6 +26,7 @@ struct NavBar: View {
     
     var body: some View {
         ZStack{
+            
             VStack {
                 if topNavBar{
                     HStack {
@@ -85,6 +86,11 @@ struct NavBar: View {
                 
                 Spacer()
                 
+                HStack {
+                    Spacer()
+                    
+                }.padding(.top)
+                    .background(.ultraThinMaterial)
             }
         }
     }

@@ -15,6 +15,7 @@ struct AccountView: View {
             
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Account")
             
+            
         }
     }
 }
