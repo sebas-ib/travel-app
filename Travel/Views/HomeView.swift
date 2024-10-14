@@ -20,7 +20,20 @@ struct HomeView: View {
                 ScrollView(.vertical) {
                     HStack{
                         Spacer()
-                        VStack(spacing: 15.0){
+                        VStack(alignment: .leading, spacing: 15.0){
+                            
+                            Text("Trending Itineraries").fontWeight(.semibold)
+                            ScrollView(.horizontal){
+                                HStack{
+                                    
+                                    placeNavigationLink(plan:itineraries[0])
+                                    
+                                }
+                            }.scrollIndicators(.hidden)
+                            
+                            
+                            Text("Itineraries By Country").fontWeight(.semibold)
+                            
                             LargePlaceView(image: Image("paris"),place: "France",tripsCount: 432)
                             LargePlaceView(image: Image("unitedstates"),place: "The United States",tripsCount: 231)
                             LargePlaceView(image:Image("germany"),place:"Germany",tripsCount: 634)
@@ -32,6 +45,7 @@ struct HomeView: View {
             }
             .safeAreaPadding(.top,75)
             .safeAreaPadding(.bottom,30)
+            .scrollIndicators(.hidden)
             
             
             
@@ -40,5 +54,11 @@ struct HomeView: View {
             
         }
         
+    }
+    
+    func placeNavigationLink(plan : ItineraryDetails) -> some View {
+        NavigationLink(destination: ItineraryView(itinerary :plan)) {
+            SmallPlaceView(itinerary: plan)
+        }
     }
 }
