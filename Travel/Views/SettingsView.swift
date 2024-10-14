@@ -8,16 +8,10 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    
-    // Access the presentation mode to handle view dismissal
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         ZStack {
             Color("BackgroundColor").ignoresSafeArea()
             VStack {
-                
-                // Your view content goes here
                 List{
                     Text("Account")
                     Text("Friend Requests")
@@ -31,8 +25,4 @@ struct SettingsView: View {
             
         }.navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-    SettingsView()
 }

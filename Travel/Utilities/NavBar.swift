@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct NavBar: View {
-    
+    @Environment(\.dismiss) var dismiss
+
     
     let topNavBar: Bool
     let search: Bool
@@ -21,7 +22,6 @@ struct NavBar: View {
     @State private var searchText = ""
     @FocusState private var isSearching: Bool
     
-    @Environment(\.presentationMode) var presentationMode // Access to presentation mode
     
     
     var body: some View {
@@ -33,7 +33,7 @@ struct NavBar: View {
                         
                         if back {
                             Button(action: {
-                                presentationMode.wrappedValue.dismiss()
+                                dismiss()
                             }) {
                                 HStack {
                                     Image(systemName: "chevron.left") // Back arrow icon
@@ -60,7 +60,8 @@ struct NavBar: View {
                                     .padding(.leading, 10)
                                     .font(.title3)
                                 
-                                TextField("", text: $searchText)
+                                TextField("", text: $searchText).autocorrectionDisabled(true)
+                                    .textInputAutocapitalization(.never)
                                     .frame(height: 40.0)
                                     .focused($isSearching)
                                 Spacer()
@@ -85,19 +86,19 @@ struct NavBar: View {
                 }
                 
                 Spacer()
-                
-                HStack {
-                    Spacer()
-                }.padding(.vertical, 5.0)
-                .background(.ultraThinMaterial)
+//                
+//                HStack {
+//                    Spacer()
+//                }.padding(.vertical, 5.0)
+//                .background(.ultraThinMaterial)
             }
         }
     }
 }
-
-
-
-
-#Preview {
-    NavBar(topNavBar: true, search: true, settings: true, back: true, title: "Discover")
-}
+//
+//
+//
+//
+//#Preview {
+//    NavBar(topNavBar: true, search: true, settings: true, back: true, title: "Discover")
+//}

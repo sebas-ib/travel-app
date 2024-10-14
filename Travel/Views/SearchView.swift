@@ -11,13 +11,62 @@ struct SearchView: View {
     
     var body: some View {
         ZStack {
-            Color(.purple).ignoresSafeArea()
+            
+            Color("BackgroundColor").ignoresSafeArea()
+
+            VStack{
+                ScrollView(.vertical) {
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                            
+                        }
+                        Spacer()
+                    }
+                }
+            }.safeAreaPadding(.vertical,75)
+            
+            
+            
             
             NavBar(topNavBar: true, search: true, settings: true, back: false, title: "")
         }
     }
-}
-
-#Preview {
-    SearchView()
 }
