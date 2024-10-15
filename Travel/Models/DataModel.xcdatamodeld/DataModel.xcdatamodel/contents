@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A348" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier=""/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A348" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="eventDesc" optional="YES" attributeType="String"/>
+        <attribute name="eventLocation" optional="YES" attributeType="String"/>
+        <attribute name="eventName" optional="YES" attributeType="String"/>
+        <attribute name="eventTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Itinerary" inverseName="event" inverseEntity="Itinerary"/>
+    </entity>
+    <entity name="Itinerary" representedClassName=".Itinerary" syncable="YES">
+        <attribute name="cities" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
+        <attribute name="countries" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
+        <attribute name="enddate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary" valueTransformerName="" customClassName="Image"/>
+        <attribute name="startdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="event" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="itinerary" inverseEntity="Event"/>
+    </entity>
+</model>

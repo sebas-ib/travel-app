@@ -26,8 +26,8 @@ struct HomeView: View {
                             ScrollView(.horizontal){
                                 HStack{
                                     
-                                    placeNavigationLink(plan:itineraries[0])
-                                    placeNavigationLink(plan:itineraries[1])
+//                                    placeNavigationLink(plan:itineraries[0])
+//                                    placeNavigationLink(plan:itineraries[1])
                                     
                                 }
                             }.scrollIndicators(.hidden)
@@ -57,9 +57,9 @@ struct HomeView: View {
         
     }
     
-    func placeNavigationLink(plan : ItineraryDetails) -> some View {
-        NavigationLink(destination: TripView(itinerary : plan)) {
-            SmallPlaceView(itinerary: plan)
-        }
-    }
+//    func placeNavigationLink(plan : ItineraryDetails) -> some View {
+//        NavigationLink(destination: TripView(itinerary : plan)) {
+//            SmallPlaceView(itinerary: plan)
+//        }
+//    }
 }
