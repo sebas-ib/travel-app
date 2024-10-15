@@ -15,55 +15,38 @@ struct HomeView: View {
         ZStack {
             
             Color("BackgroundColor").ignoresSafeArea()
-
+            
             VStack{
                 ScrollView(.vertical) {
                     HStack{
                         Spacer()
-                        VStack{
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
-                            Text("Test").font(.largeTitle).foregroundStyle(Color("TextColor"))
+                        VStack(alignment: .leading, spacing: 15.0){
                             
+                            Text("Trending Itineraries").fontWeight(.semibold)
+                            ScrollView(.horizontal){
+                                HStack{
+                                    
+                                    placeNavigationLink(plan:itineraries[0])
+                                    placeNavigationLink(plan:itineraries[1])
+                                    
+                                }
+                            }.scrollIndicators(.hidden)
+                            
+                            
+                            Text("Itineraries By Country").fontWeight(.semibold)
+                            
+                            LargePlaceView(image: Image("paris"),place: "France",tripsCount: 432)
+                            LargePlaceView(image: Image("unitedstates"),place: "The United States",tripsCount: 231)
+                            LargePlaceView(image:Image("germany"),place:"Germany",tripsCount: 634)
+                            LargePlaceView(image: Image("belgium"),place: "Belgium",tripsCount: 857)
                         }
                         Spacer()
                     }
                 }
-            }.safeAreaPadding(.vertical,75)
+            }
+            .safeAreaPadding(.top,75)
+            .safeAreaPadding(.bottom,30)
+            .scrollIndicators(.hidden)
             
             
             
@@ -71,6 +54,12 @@ struct HomeView: View {
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Discover")
             
         }
-
+        
+    }
+    
+    func placeNavigationLink(plan : ItineraryDetails) -> some View {
+        NavigationLink(destination: TripView(itinerary : plan)) {
+            SmallPlaceView(itinerary: plan)
+        }
     }
 }

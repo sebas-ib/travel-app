@@ -29,9 +29,38 @@
 		9EBBE6EA2CBC1CFD00FB176E /* TravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9E2AAB992CBDE88D00E98935 /* Exceptions for "Travel" folder in "TravelTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				iAWriterDuoV.ttf,
+			);
+			target = 9EBBE6DF2CBC1CFD00FB176E /* TravelTests */;
+		};
+		9E2AAB9A2CBDE88D00E98935 /* Exceptions for "Travel" folder in "TravelUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				iAWriterDuoV.ttf,
+			);
+			target = 9EBBE6E92CBC1CFD00FB176E /* TravelUITests */;
+		};
+		9E2AAB9C2CBDECCB00E98935 /* Exceptions for "Travel" folder in "Travel" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9EBBE6CF2CBC1CF800FB176E /* Travel */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9EBBE6D22CBC1CF800FB176E /* Travel */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9E2AAB9C2CBDECCB00E98935 /* Exceptions for "Travel" folder in "Travel" target */,
+				9E2AAB992CBDE88D00E98935 /* Exceptions for "Travel" folder in "TravelTests" target */,
+				9E2AAB9A2CBDE88D00E98935 /* Exceptions for "Travel" folder in "TravelUITests" target */,
+			);
 			path = Travel;
 			sourceTree = "<group>";
 		};
@@ -399,6 +428,7 @@
 				DEVELOPMENT_TEAM = Y88FN7D36Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Travel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +458,7 @@
 				DEVELOPMENT_TEAM = Y88FN7D36Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Travel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
