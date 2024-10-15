@@ -27,7 +27,7 @@ struct HomeView: View {
                                 HStack{
                                     
                                     placeNavigationLink(plan:itineraries[0])
-//                                    placeNavigationLink(plan:itineraries[1])
+                                    placeNavigationLink(plan:itineraries[1])
                                     
                                 }
                             }.scrollIndicators(.hidden)

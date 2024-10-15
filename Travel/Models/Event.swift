@@ -106,3 +106,69 @@ let eventsArr4: [Event] = [
           eventTime: timeStringToDate("2200")!,
           eventLocation: "Salzburg Airport")
 ]
+
+
+let newYorkEventsDay1: [Event] = [
+    Event(eventName: "Landing in New York",
+          eventDesc: "Land at JFK",
+          eventTime: timeStringToDate("0700")!,
+          eventLocation: "John F. Kennedy International Airport"),
+    Event(eventName: "Statue of Liberty Tour",
+          eventDesc: "Visit the iconic Statue of Liberty and Ellis Island.",
+          eventTime: timeStringToDate("0900")!,
+          eventLocation: "Liberty Island, New York"),
+    Event(eventName: "Central Park Walk",
+          eventDesc: "Enjoy a scenic walk through Central Park.",
+          eventTime: timeStringToDate("1200")!,
+          eventLocation: "Central Park, New York"),
+    Event(eventName: "Metropolitan Museum of Art",
+          eventDesc: "Explore the vast collections at the Met.",
+          eventTime: timeStringToDate("1400")!,
+          eventLocation: "1000 5th Ave, New York"),
+    Event(eventName: "Broadway Show",
+          eventDesc: "Catch an exciting show on Broadway.",
+          eventTime: timeStringToDate("1900")!,
+          eventLocation: "Broadway, New York")
+]
+
+let newYorkEventsDay2: [Event] = [
+    Event(eventName: "9/11 Memorial & Museum",
+          eventDesc: "Visit the memorial and museum honoring the victims of 9/11.",
+          eventTime: timeStringToDate("1000")!,
+          eventLocation: "180 Greenwich St, New York"),
+    Event(eventName: "Brooklyn Bridge Walk",
+          eventDesc: "Walk across the iconic Brooklyn Bridge.",
+          eventTime: timeStringToDate("1300")!,
+          eventLocation: "Brooklyn Bridge, New York"),
+    Event(eventName: "DUMBO Exploration",
+          eventDesc: "Explore the trendy DUMBO area and its waterfront.",
+          eventTime: timeStringToDate("1500")!,
+          eventLocation: "DUMBO, Brooklyn"),
+    Event(eventName: "Dinner in Little Italy",
+          eventDesc: "Enjoy authentic Italian cuisine in Little Italy.",
+          eventTime: timeStringToDate("1900")!,
+          eventLocation: "Little Italy, New York")
+]
+
+let newYorkEventsDay3: [Event] = [
+    Event(eventName: "The High Line",
+          eventDesc: "Walk the High Line, an elevated park with beautiful views.",
+          eventTime: timeStringToDate("1000")!,
+          eventLocation: "The High Line, New York"),
+    Event(eventName: "Chelsea Market",
+          eventDesc: "Explore the food stalls and shops at Chelsea Market.",
+          eventTime: timeStringToDate("1200")!,
+          eventLocation: "75 9th Ave, New York"),
+    Event(eventName: "Empire State Building",
+          eventDesc: "Visit the observation deck for stunning city views.",
+          eventTime: timeStringToDate("1500")!,
+          eventLocation: "350 5th Ave, New York"),
+    Event(eventName: "Times Square at Night",
+          eventDesc: "Experience the bright lights and energy of Times Square.",
+          eventTime: timeStringToDate("2000")!,
+          eventLocation: "Times Square, New York"),
+    Event(eventName: "Leaving  New York",
+          eventDesc: "Taking off from JFK",
+          eventTime: timeStringToDate("2200")!,
+          eventLocation: "John F. Kennedy International Airport"),
+]

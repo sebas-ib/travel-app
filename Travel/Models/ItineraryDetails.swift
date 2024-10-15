@@ -30,6 +30,13 @@ let itineraries: [ItineraryDetails] = [
             dayplans
         ,
         image: Image("salzburg")
+    ),ItineraryDetails(
+        countries: ["USA"],
+        cities: ["New York"],
+        startDate: Calendar.current.date(byAdding: .day, value: 5, to: Date())!,
+        endDate: Calendar.current.date(byAdding: .day, value: 7, to: Date())!,
+        activities: newYorkDayPlans,
+        image: Image("newyork") // Assuming you have an image asset named "new_york"
     )
 ]
 

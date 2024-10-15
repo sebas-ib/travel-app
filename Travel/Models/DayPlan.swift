@@ -32,5 +32,15 @@ let dayplans: [DayPlan] = [
     )
 ]
 
-
+let newYorkDayPlans: [DayPlan] = [
+    DayPlan(
+        dayNum: 1, weekDay: "Friday", events: newYorkEventsDay1
+    ),
+    DayPlan(
+        dayNum: 2, weekDay: "Saturday", events: newYorkEventsDay2
+    ),
+    DayPlan(
+        dayNum: 3, weekDay: "Sunday", events: newYorkEventsDay3
+    )
+]
 
