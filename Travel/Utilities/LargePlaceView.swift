@@ -38,10 +38,7 @@ struct LargePlaceView : View {
                 Spacer()
             }
         }
-
-        
     }
-    
 }
 
 

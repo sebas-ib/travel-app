@@ -10,8 +10,8 @@ import SwiftUICore
 
 struct ItineraryDetails: Identifiable {
     var id = UUID()  // This provides a unique identifier
-    var country : String
-    var city : String
+    var countries : [String]
+    var cities : [String]
     var startDate: Date
     var endDate: Date
     var activities: [DayPlan]
@@ -22,13 +22,13 @@ struct ItineraryDetails: Identifiable {
 
 let itineraries: [ItineraryDetails] = [
     ItineraryDetails(
-        country: "Austria",
-        city: "Salzburg",
+        countries: ["Austria"],
+        cities: ["Salzburg"],
         startDate: Date(),
-        endDate: Calendar.current.date(byAdding: .day, value: 7, to: Date())!,
-        activities: [
-            dayplans[0],
-        ],
+        endDate: Calendar.current.date(byAdding: .day, value: 4, to: Date())!,
+        activities:
+            dayplans
+        ,
         image: Image("salzburg")
     )
 ]

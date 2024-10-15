@@ -13,14 +13,22 @@ struct SmallPlaceView : View {
     var body : some View {
         ZStack {
             VStack(spacing: 0.0) {
-                itinerary.image.resizable().scaledToFill()
-                    .frame(width:75,height: 75, alignment: .center)
-                    .clipped().cornerRadius(37.5)
-                Text("\(itinerary.city)")
+                itinerary.image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 75, height: 75)
+                    .clipShape(Circle())
+                
+                
+                Text(itinerary.cities.count == 1 ? itinerary.cities[0] : itinerary.countries[0])
                     .font(.caption2)
                     .fontWeight(.regular)
             }
             Spacer()
         }
     }
+}
+
+#Preview {
+    SmallPlaceView(itinerary: itineraries[0])
 }
