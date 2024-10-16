@@ -29,3 +29,20 @@
 //    }
 //}
 //
+
+
+import SwiftUI
+
+struct SmallPlaceView : View {
+    var itinerary : Itinerary
+    
+    var body : some View {
+        Text(itinerary.country)
+            .font(.caption2)
+            .fontWeight(.regular)
+    }
+}
+//
+//#Preview {
+//    SmallPlaceView()
+//}

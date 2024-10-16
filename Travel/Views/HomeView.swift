@@ -11,6 +11,8 @@ import SwiftUI
 struct HomeView: View {
     @State private var text = ""
     
+    @FetchRequest(fetchRequest: Itinerary.all()) private var itineraries
+    
     var body: some View {
         ZStack {
             
@@ -27,8 +29,11 @@ struct HomeView: View {
                                 HStack{
                                     
 //                                    placeNavigationLink(plan:itineraries[0])
-//                                    placeNavigationLink(plan:itineraries[1])
                                     
+                                    ForEach(itineraries) { itinerary in
+                                        placeNavigationLink(itinerary: itinerary)
+                                    }
+                                                                        
                                 }
                             }.scrollIndicators(.hidden)
                             
@@ -57,9 +62,9 @@ struct HomeView: View {
         
     }
     
-//    func placeNavigationLink(plan : ItineraryDetails) -> some View {
-//        NavigationLink(destination: TripView(itinerary : plan)) {
-//            SmallPlaceView(itinerary: plan)
-//        }
-//    }
+    func placeNavigationLink(itinerary: Itinerary) -> some View {
+        NavigationLink(destination: TripView(itinerary: itinerary)) {
+            SmallPlaceView(itinerary: itinerary)
+        }
+    }
 }

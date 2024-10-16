@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct TravelApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, ItinerariesProvider.shared.viewContext)
         }
     }
 }

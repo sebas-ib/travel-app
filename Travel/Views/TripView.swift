@@ -88,3 +88,36 @@
 //    }
 //}
 //
+
+
+
+import SwiftUI
+
+struct TripView: View {
+    var itinerary: Itinerary
+    
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color("BackgroundColor").ignoresSafeArea()
+                
+                ScrollView(.vertical) {
+                    VStack(alignment: .leading) {
+                        
+                        Text(itinerary.city)
+                        Spacer().frame(height: 30) // Additional spacing at the bottom
+                    }
+                    .padding(.top, 65)
+                    .scrollIndicators(.hidden)
+                }
+                .navigationBarBackButtonHidden(true)
+                
+                NavBar(topNavBar: true, search: false, settings: false, back: true, title: " ")
+            }
+        }
+    }
+}
+//
+//#Preview {
+//    TripView()
+//}
