@@ -94,7 +94,9 @@
 import SwiftUI
 
 struct TripView: View {
-    var itinerary: Itinerary
+    @Environment(\.managedObjectContext) private var moc
+    
+    @ObservedObject var itinerary: Itinerary
     
     var body: some View {
         NavigationStack {
@@ -106,6 +108,15 @@ struct TripView: View {
                         
                         Text(itinerary.city)
                         Spacer().frame(height: 30) // Additional spacing at the bottom
+                        Button {
+                            toggleSaved()
+                        } label: {
+                            Image(systemName: "bookmark")
+                                .font(.title3)
+                                .foregroundStyle(itinerary.saved ? .yellow : .gray.opacity(0.3))
+                        }
+
+                        
                     }
                     .padding(.top, 65)
                     .scrollIndicators(.hidden)
@@ -117,7 +128,24 @@ struct TripView: View {
         }
     }
 }
-//
-//#Preview {
-//    TripView()
-//}
+
+private extension TripView {
+    func toggleSaved() {
+        itinerary.saved.toggle()
+        do {
+            if moc.hasChanges{
+                try moc.save()
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+}
+
+struct TripView_Previews: PreviewProvider {
+    static var previews : some View{
+        TripView(itinerary: .preview())
+    }
+}

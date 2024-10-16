@@ -34,7 +34,7 @@
 import SwiftUI
 
 struct SmallPlaceView : View {
-    var itinerary : Itinerary
+    let itinerary : Itinerary
     
     var body : some View {
         Text(itinerary.country)
@@ -42,7 +42,8 @@ struct SmallPlaceView : View {
             .fontWeight(.regular)
     }
 }
-//
-//#Preview {
-//    SmallPlaceView()
-//}
+struct SmallPlaceView_Previews: PreviewProvider {
+    static var previews : some View{
+        SmallPlaceView(itinerary: .preview())
+    }
+}

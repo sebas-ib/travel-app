@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUICore
 
 final class ItinerariesProvider {
     
@@ -24,7 +25,14 @@ final class ItinerariesProvider {
     
     private init (){
         
+        
+        
         persistentContainer = NSPersistentContainer(name: "DataModel")
+        
+        if EnvironmentValues.isPreview {
+            persistentContainer.persistentStoreDescriptions.first?.url = .init(fileURLWithPath: "/dev/null")
+        }
+        
         persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
         persistentContainer.loadPersistentStores{ _, error in
             if let error {
@@ -33,6 +41,15 @@ final class ItinerariesProvider {
             }
             
         }
+        
+    }
+    
+}
+
+
+extension EnvironmentValues {
+    static var isPreview: Bool{
+        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
         
     }
     

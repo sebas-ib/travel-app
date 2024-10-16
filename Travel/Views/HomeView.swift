@@ -27,9 +27,6 @@ struct HomeView: View {
                             Text("Trending Itineraries").fontWeight(.semibold)
                             ScrollView(.horizontal){
                                 HStack{
-                                    
-//                                    placeNavigationLink(plan:itineraries[0])
-                                    
                                     ForEach(itineraries) { itinerary in
                                         placeNavigationLink(itinerary: itinerary)
                                     }
