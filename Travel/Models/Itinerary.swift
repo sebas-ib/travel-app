@@ -13,12 +13,18 @@ final class Itinerary: NSManagedObject, Identifiable {
     @NSManaged var city: String
     @NSManaged var country: String
     @NSManaged var saved: Bool
+    @NSManaged var name: String
+    @NSManaged var arrivalDate: Date
+    @NSManaged var departureDate: Date
 
     
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
         setPrimitiveValue(false, forKey: "saved")
+        setPrimitiveValue(Date.now, forKey: "arrivalDate")
+        setPrimitiveValue(Date.now, forKey: "departureDate")
+
     }
 }
 
@@ -45,6 +51,7 @@ extension Itinerary {
         var itineraries = [Itinerary]()
         for _ in 0..<count {
             let itinerary = Itinerary(context: context)
+            itinerary.name = "France Travel Itinerary"
             itinerary.country = "France"
             itinerary.city = "Paris"
             itinerary.saved = false

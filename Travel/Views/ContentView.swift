@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-        
+    
     var provider = ItinerariesProvider.shared
     
     var body: some View {
@@ -22,30 +22,20 @@ struct ContentView: View {
                                     .renderingMode(.template)
                             }
                         
-                        SearchView()
-                            .tabItem {
-                                Image("magnifingglass")
-                                    .renderingMode(.template)
-                            }
-
                         Spacer()
-
-                        SavedView()
+                        
+                        PastTripsView()
                             .tabItem {
                                 Image("bookmark")
                                     .renderingMode(.template)
                             }
-
-                        AccountView()
-                            .tabItem {
-                                Image("person")
-                                    .renderingMode(.template)
-                            }
+                        
+                        
                     }
                     .toolbarBackground(.ultraThinMaterial, for: .tabBar)
                     .toolbarBackground(.visible, for: .tabBar)
                 }
-
+                
                 // Overlay a button in the middle of the TabView
                 VStack {
                     Spacer()
