@@ -12,6 +12,7 @@ struct TravelApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, ItinerariesProvider.shared.viewContext)
         }
     }
 }
