@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import FirebaseAnalytics
 
 struct HomeView: View {
     @State private var text = ""
@@ -40,7 +40,7 @@ struct HomeView: View {
             // Navigation Bar
             NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Your Itineraries")
         }
-    }
+}
     
     func placeNavigationLink(itinerary: Itinerary) -> some View {
         NavigationLink(destination: TripView(itinerary: itinerary)) {

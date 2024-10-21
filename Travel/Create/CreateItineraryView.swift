@@ -1,77 +1,81 @@
 //
-//  CreateItineraryView.swift
+//  CreateItineraryV.swift
 //  Travel
 //
-//  Created by Sebastian Ibarra on 10/15/24.
+//  Created by Sebastian Ibarra on 10/19/24.
 //
-
 import SwiftUI
 
-// View for creating an itinerary
 struct CreateItineraryView: View {
+    @ObservedObject var textFieldObserver = TextFieldObserver(delay: .milliseconds(500)) // Set debounce delay
     
-    // Dismiss the view
     @Environment(\.dismiss) var dismiss
     
-    // View model to manage the itinerary data
     @ObservedObject var vm: EditItineraryViewModel
-    
+
+//    // Computed property to filter places based on searchText
+//    var filteredPlaces: [(Cities, String, String)] { // Tuple of (City, State Name, Country Name)
+//            guard !textFieldObserver.debouncedText.isEmpty else { return [] }
+//            
+//            let lowercasedSearchText = textFieldObserver.debouncedText.lowercased().replacingOccurrences(of: " ", with: "")
+//            let maxResults = 10
+//            var results: [(Cities, String, String)] = []
+//            
+//            // Manual iteration through countries, states, and cities
+//            for country in countries {
+//                for state in country.states {
+//                    for city in state.cities {
+//                        // Combine city, state, and country names into a single searchable string
+//                        let fullPlaceName = "\(city.name) \(state.name) \(country.name)"
+//                            .lowercased()
+//                            .replacingOccurrences(of: " ", with: "")
+//                        
+//                        // Check if the search text matches
+//                        if fullPlaceName.contains(lowercasedSearchText) {
+//                            results.append((city, state.name, country.name))
+//                            
+//                            // Stop once we reach maxResults
+//                            if results.count >= maxResults {
+//                                return results
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            
+//            return results
+//        }
+
+
     var body: some View {
-        List {
-            // Text fields
-            TextField("Country", text: $vm.itinerary.country)
-                .keyboardType(.namePhonePad)
-            TextField("City", text: $vm.itinerary.city)
-                .keyboardType(.namePhonePad)
-            
-            // Date range picker for arrival and departure dates
+        VStack {
+            // Search TextField
+            TextField("Search for a city...", text: $textFieldObserver.searchText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            // Filtered Places List
+
+
+            // Date Range Picker
             DateRangePicker(startDate: $vm.itinerary.arrivalDate, endDate: $vm.itinerary.departureDate)
-            
+                .padding(.horizontal)
         }
         .toolbar {
-            // Done button to save itinerary
             ToolbarItem(placement: .confirmationAction) {
-                Button("Done") {
+                Button(action: {
                     do {
-                        // Try to save and dismiss view when done
                         vm.itinerary.name = "\(vm.itinerary.country) Travel Itinerary"
                         try vm.save()
                         dismiss()
                     } catch {
-                        // Print error
-                        print(error)
+                        print("Failed to save itinerary: \(error)")
                     }
+                }) {
+                    Text("Create")
                 }
             }
-        }
-    }
-}
-
-struct DateRangePicker: View {
-    @Binding var startDate: Date
-    @Binding var endDate: Date
-
-    var body: some View {
-        VStack {
-            HStack {
-                DatePicker("Arrival", selection: $startDate, in: Date()..., displayedComponents: .date)
-                
-                Spacer()
-                
-                DatePicker("Departure", selection: $endDate, in: startDate..., displayedComponents: .date)
-            }
-            .padding(.horizontal)
-            
-            // Display a visual range of selected dates
-            Text("\(formattedDateRange(startDate: startDate, endDate: endDate))")
-        }
-    }
-
-    // Helper function to format the date range for display
-    private func formattedDateRange(startDate: Date, endDate: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        return "\(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))"
+        }.ignoresSafeArea(.keyboard)
     }
 }
 
@@ -80,9 +84,10 @@ struct CreateItineraryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             let preview = ItinerariesProvider.shared
-            
+
             // Pass a preview context for the view model
-            CreateItineraryView(vm: .init(provider: preview)).environment(\.managedObjectContext, preview.viewContext)
+            CreateItineraryView(vm: .init(provider: preview))
+                .environment(\.managedObjectContext, preview.viewContext)
         }
     }
 }
