@@ -3,7 +3,6 @@ import json
 
 from firebase_admin import credentials, firestore
 
-# Use the path to your Firebase service account key JSON file
 cred = credentials.Certificate('/Users/sebastian/PrivateKey/travel-3c0d3-firebase-adminsdk-mid2r-7c76af12f1.json')
 firebase_admin.initialize_app(cred)
 
@@ -36,7 +35,6 @@ def upload_data_to_firestore(countrydata):
             'longitude': country.get('longitude'),
             'emoji': country.get('emoji'),
             'nationality': country.get('nationality'),
-            # Add more fields as needed
         }
         country_ref.set(country_data)
 
@@ -50,7 +48,6 @@ def upload_data_to_firestore(countrydata):
                     'longitude': state.get('longitude'),
                     'state_code': state.get('state_code'),
                     'type': state.get('type'),
-                    # Add more fields as needed
                 }
                 state_ref.set(state_data)
 
@@ -62,7 +59,6 @@ def upload_data_to_firestore(countrydata):
                             'name': city['name'],
                             'latitude': city.get('latitude'),
                             'longitude': city.get('longitude'),
-                            # Add more fields as needed
                         }
                         city_ref.set(city_data)
 
