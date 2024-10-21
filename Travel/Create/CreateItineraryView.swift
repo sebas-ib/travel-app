@@ -59,7 +59,7 @@ struct CreateItineraryView: View {
 
             // Date Range Picker
             DateRangePicker(startDate: $vm.itinerary.arrivalDate, endDate: $vm.itinerary.departureDate)
-                .padding(.horizontal)
+                .padding(.horizontal).ignoresSafeArea(.keyboard)
         }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
@@ -75,7 +75,7 @@ struct CreateItineraryView: View {
                     Text("Create")
                 }
             }
-        }.ignoresSafeArea(.keyboard)
+        }
     }
 }
 

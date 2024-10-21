@@ -64,9 +64,6 @@ struct ContentView: View {
             }
         }
         .accentColor(Color("TextColor"))
-        .onAppear {
-            fetchCountriesData()
-        }
     }
 }
 
