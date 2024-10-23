@@ -36,7 +36,7 @@ extension Itinerary {
     static func all() -> NSFetchRequest<Itinerary> {
         let request: NSFetchRequest<Itinerary> = itinerariesFetchRequest
         request.sortDescriptors = [
-            NSSortDescriptor(keyPath: \Itinerary.country, ascending: true)
+            NSSortDescriptor(keyPath: \Itinerary.arrivalDate, ascending: true)
         ]
         return request
     }

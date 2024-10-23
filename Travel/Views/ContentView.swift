@@ -44,7 +44,7 @@ struct ContentView: View {
                         NavigationLink(destination: CreateItineraryView(vm: .init(provider: provider))) {
                             ZStack {
                                 Circle()
-                                    .fill(Color.blue)
+                                    .fill(Color("AppColor"))
                                     .frame(width: 70, height: 70)
                                     .shadow(radius: 4)
                                 

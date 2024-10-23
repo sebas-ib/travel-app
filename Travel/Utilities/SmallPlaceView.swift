@@ -29,6 +29,7 @@ struct SmallPlaceView: View {
 
 struct SmallPlaceView_Previews: PreviewProvider {
     static var previews: some View {
+        
         SmallPlaceView(itinerary: .preview())
             .previewLayout(.sizeThatFits) // Adjusts the preview layout
             .padding() // Adds padding to the preview
