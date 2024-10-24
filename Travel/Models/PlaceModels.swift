@@ -7,7 +7,6 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Country Model
 struct Countries: Codable, Equatable {
     let id: Int?
     let name: String?

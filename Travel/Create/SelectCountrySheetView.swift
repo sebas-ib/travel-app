@@ -12,6 +12,8 @@ struct SelectCountrySheetView: View {
     @Binding var isSheetShowing: Bool
     @FocusState var isSearching: Bool
 
+    
+
     var body: some View {
         VStack {
             TextField("Search for a country...", text: $textFieldObserver.searchText)
@@ -24,11 +26,20 @@ struct SelectCountrySheetView: View {
             if !textFieldObserver.searchResults.isEmpty && textFieldObserver.debouncedText == textFieldObserver.searchText {
                 List(textFieldObserver.searchResults, id: \.self) { result in
                     Button {
-                        vm.itinerary.country = result
-                        vm.itinerary.name = "\(vm.itinerary.country) Travel Itinerary"
+                        // Create a new Country instance and add it to the itinerary
+                        let selectedCountry = Country(context: vm.viewContext) // Access the viewContext here
+                        selectedCountry.countryName = result
+                        vm.itinerary.addCountry(selectedCountry)
+                        
+                        // Update the itinerary's name
+                        vm.itinerary.name = "\(vm.itinerary.countriesArray.map { $0.countryName }.joined(separator: ", ")) Travel Itinerary"
+                        
+                        // Clear the search text and hide the sheet
                         isSearching = false
                         textFieldObserver.searchText = ""
                         isSheetShowing = false
+                        print("Current countries in itinerary: \(vm.itinerary.countriesArray.map { $0.countryName })")
+
                     } label: {
                         Text(result)
                     }

@@ -20,7 +20,9 @@ struct TripView: View {
                 ScrollView(.vertical) {
                     VStack(alignment: .leading) {
                         
-                        Text(itinerary.city)
+                        if itinerary.citiesArray.count != 0 {
+                            Text(itinerary.citiesArray[0].cityName)
+                        }
                         Spacer().frame(height: 30) // Additional spacing at the bottom
                         Button {
                             toggleSaved()
