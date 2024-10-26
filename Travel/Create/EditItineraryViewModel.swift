@@ -23,6 +23,10 @@ final class EditItineraryViewModel: ObservableObject {
         self.itinerary = Itinerary(context: self.context) // Create a new itinerary in the context
     }
     
+    var viewContext : NSManagedObjectContext{
+        return context
+    }
+    
     // Save function if there are changes
     func save() throws {
         if context.hasChanges {

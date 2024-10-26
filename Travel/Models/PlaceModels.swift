@@ -7,49 +7,6 @@
 import Foundation
 import SwiftUI
 
-import FirebaseCore
-import FirebaseFirestore
-
-import Firebase
-import FirebaseStorage
-
-func fetchCountriesData() {
-    let storage = Storage.storage()
-    // Reference to the JSON file directly
-    let storageRef = storage.reference().child("countries.json")
-
-    storageRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
-        if let error = error {
-            print("Error fetching JSON file: \(error)")
-            return
-        }
-
-        guard let data = data else {
-            print("No data available")
-            return
-        }
-
-        do {
-            let decoder = JSONDecoder()
-            let countries = try decoder.decode([Countries].self, from: data)
-            for country in countries {
-                if country.name == "United States"{
-                    print("\(country.name ?? "_")")
-                    for state in country.states {
-                        print(state?.name ?? "")
-                    }
-                }
-            }
-        } catch {
-            print("Error decoding JSON: \(error)")
-        }
-    }
-}
-
-
-
-
-// MARK: - Country Model
 struct Countries: Codable, Equatable {
     let id: Int?
     let name: String?
