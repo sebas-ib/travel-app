@@ -53,7 +53,6 @@ final class Itinerary: NSManagedObject, Identifiable {
         if let currentCountries = self.countries as? Set<Country>, currentCountries.contains(country) {
             self.mutableSetValue(forKey: "countries").remove(country)
             country.itinerary = nil
-            objectWillChange.send()
         } else {
             print("Country not found in itinerary: \(country.countryName)")
         }

@@ -21,7 +21,7 @@ struct RemoveLocation: View {
                 print("Removing country: \(country.countryName)")
                 print("Countries before removal: \(vm.itinerary.countriesArray.map { $0.countryName })")
                 vm.itinerary.removeCountry(country)
-                print("Countries after removal: \(vm.itinerary.countriesArray.map { $0.countryName })")
+                vm.objectWillChange.send()
             } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(.white)

@@ -22,15 +22,18 @@ struct CreateItineraryView: View {
                 .font(.title)
                 .fontWeight(.medium)
                 .foregroundStyle(Color("AppColor"))
+                .padding([.top, .leading, .trailing])
             
-            if vm.itinerary.countries.count == 0 {
-                Text("Start by adding a country")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
-            } else if vm.itinerary.cities.count == 0 {
-                Text("Add cities if you'd like, or add another country")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
+            Group {
+                if vm.itinerary.countries.count == 0 {
+                    Text("Start by adding a country")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
+                } else if vm.itinerary.cities.count == 0 {
+                    Text("Add another country if you'd like, or set your trip dates")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
+                }
             }
             
             
@@ -47,21 +50,16 @@ struct CreateItineraryView: View {
                         RemoveLocation(vm: vm, country: country)
                     }
                 }
+                .padding(.leading)
             }
             
-            //            if !(vm.itinerary.countries.count == 0) {
-            //                let temp = vm.itinerary.countriesArray
-            //                SelectedCity(place: $vm.itinerary.cities[0])
-            //            }
-            
-            // Date Range Picker
             DateRangePicker(startDate: $vm.itinerary.arrivalDate, endDate: $vm.itinerary.departureDate)
                 .padding(.horizontal)
                 .ignoresSafeArea(.keyboard)
                 .transition(.opacity)
             
             Spacer()
-        }
+        }.padding(.top,50)
         .sheet(isPresented: $isSheetShowing) {
             SelectCountrySheetView(
                 textFieldObserver: textFieldObserver,
@@ -71,28 +69,34 @@ struct CreateItineraryView: View {
             )
         }
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
+            ToolbarItem(placement: .bottomBar) {
                 if vm.itinerary.countries.count != 0 {
                     Button(action: {
                         do {
+                            vm.itinerary.name = vm.itinerary.countriesArray.map{$0.countryName}.joined(separator: ", ") + " Trip"
                             try vm.save()
                             dismiss()
                         } catch {
                             print("Failed to save itinerary: \(error)")
                         }
                     }) {
-                        Text("Create").foregroundStyle(.white)
-                            .padding(5.0)
+                        Text("Create")
+                            .font(.title3)
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 50.0)
+                            .padding(.vertical, 15.0)
                             .background(Color("AppColor"))
-                            .cornerRadius(10)
+                            .cornerRadius(30)
                         
                     }
                 } else {
                     Text("Create")
+                        .font(.title3)
                         .foregroundStyle(.white)
-                        .padding(5.0)
+                        .padding(.horizontal, 50.0)
+                        .padding(.vertical, 15.0)
                         .background(.gray)
-                        .cornerRadius(10)
+                        .cornerRadius(30)
                     
                 }
             }
