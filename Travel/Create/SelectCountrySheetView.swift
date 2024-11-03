@@ -17,7 +17,13 @@ struct SelectCountrySheetView: View {
     var body: some View {
         VStack {
             TextField("Search for a country...", text: $textFieldObserver.searchText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(.white)
+                        .frame(height: 40)
+                        .shadow(radius: 2.5)
+                )
                 .padding(.top, 50)
                 .padding(.horizontal)
                 .focused($isSearching)

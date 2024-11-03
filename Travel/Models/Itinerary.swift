@@ -18,9 +18,10 @@ final class Itinerary: NSManagedObject, Identifiable {
     @NSManaged var arrivalDate: Date
     @NSManaged var departureDate: Date
     
-    // One itinerary can have many cities and countries (NSSet)
+    // One itinerary can have many cities, countries, and days (NSSet)
     @NSManaged var cities: NSSet
     @NSManaged var countries: NSSet
+    @NSManaged var days: NSSet
     
     
     override func awakeFromInsert() {

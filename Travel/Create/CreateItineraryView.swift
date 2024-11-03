@@ -101,6 +101,11 @@ struct CreateItineraryView: View {
                 }
             }
         }
+        .onAppear{
+            vm.itinerary.arrivalDate = Date.now
+            vm.itinerary.departureDate = Date.now
+
+        }
     }
 }
 
