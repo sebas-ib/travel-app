@@ -11,9 +11,11 @@ struct DayPlanView: View {
     
     @ObservedObject var day: DayPlan
     
+    @State private var isSheetShowing: Bool = false
+
     
     @State var showInfo: Bool = false
-        
+    
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
@@ -35,10 +37,28 @@ struct DayPlanView: View {
                 }
                 
                 // Animated content height
-                VStack {
+                VStack(alignment: .leading) {
                     if showInfo {
                         
+                        ForEach(day.eventsArray, id: \.self) { event in
+                            Text(event.name)
+                                .font(.subheadline)
+                                .bold()
+                            Text(event.desc)
+                                .font(.body)
+                                .padding(.bottom, 2)
+                        }
                         
+                        
+                        HStack(alignment: .center) {
+                            
+                            Button {
+                                isSheetShowing = true
+                            } label: {
+                                Image(systemName: "plus")
+                                Text("Add an event")
+                            }
+                        }
                         
                         Rectangle()
                             .frame(height: 1.0)
@@ -54,7 +74,10 @@ struct DayPlanView: View {
             .clipped()
             .background(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 1))
             .padding(.horizontal, 5)
-
+            
+        }
+        .sheet(isPresented: $isSheetShowing) {
+            AddEventSheetView(isSheetShowing: $isSheetShowing)
         }
     }
     

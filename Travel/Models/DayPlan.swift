@@ -34,4 +34,9 @@ final class DayPlan: NSManagedObject, Identifiable {
         self.mutableSetValue(forKey: "events").remove(event)
         event.dayPlan = nil
     }
+    
+    var eventsArray: [EventDetails] {
+        return (events.allObjects as? [EventDetails] ?? []).sorted { $0.time < $1.time }
+    }
+    
 }

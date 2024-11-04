@@ -12,14 +12,14 @@
     <entity name="DayPlan" representedClassName=".DayPlan" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dayPlan" optional="YES" attributeType="String"/>
-        <relationship name="event" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EventDetails" inverseName="dayplan" inverseEntity="EventDetails"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EventDetails" inverseName="dayplan" inverseEntity="EventDetails"/>
         <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Itinerary" inverseName="days" inverseEntity="Itinerary"/>
     </entity>
     <entity name="EventDetails" representedClassName=".EventDetails" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="dayplan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayPlan" inverseName="event" inverseEntity="DayPlan"/>
+        <relationship name="dayplan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayPlan" inverseName="events" inverseEntity="DayPlan"/>
     </entity>
     <entity name="Itinerary" representedClassName=".Itinerary" syncable="YES">
         <attribute name="arrivalDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

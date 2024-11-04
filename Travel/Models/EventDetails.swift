@@ -21,5 +21,7 @@ final class EventDetails: NSManagedObject, Identifiable {
     override func awakeFromInsert() {
         super.awakeFromInsert()
         time = Date.now
+        name = ""
+        desc = ""
     }
 }
