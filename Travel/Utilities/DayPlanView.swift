@@ -7,11 +7,13 @@
 import SwiftUI
 
 struct DayPlanView: View {
-    let day: DayPlan
+    @Environment(\.managedObjectContext) private var moc
+    
+    @ObservedObject var day: DayPlan
     
     
     @State var showInfo: Bool = false
-    
+        
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
@@ -35,14 +37,16 @@ struct DayPlanView: View {
                 // Animated content height
                 VStack {
                     if showInfo {
-                        if day.dayPlan == "" {
-                            HStack {
-                                Image(systemName: "plus")
-                                Text("Add an event")
+                        
+                        
+                        
+                        Rectangle()
+                            .frame(height: 1.0)
+                            .foregroundStyle(.gray)
+                        TextField("Add notes here...", text: $day.dayPlan)
+                            .onChange(of: day.dayPlan) {
+                                saveContext()
                             }
-                        } else{
-                            Text(day.dayPlan)
-                        }
                     }
                 }
             }
@@ -51,6 +55,17 @@ struct DayPlanView: View {
             .background(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 1))
             .padding(.horizontal, 5)
 
+        }
+    }
+    
+    
+    private func saveContext() {
+        do {
+            if moc.hasChanges{
+                try moc.save()
+            }
+        } catch {
+            print(error)
         }
     }
 }
