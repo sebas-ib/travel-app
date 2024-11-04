@@ -8,7 +8,6 @@ import SwiftUI
 
 struct DayPlanView: View {
     @Environment(\.managedObjectContext) private var moc
-    
     @ObservedObject var day: DayPlan
     
     @State private var isSheetShowing: Bool = false
@@ -77,7 +76,7 @@ struct DayPlanView: View {
             
         }
         .sheet(isPresented: $isSheetShowing) {
-            AddEventSheetView(isSheetShowing: $isSheetShowing)
+            AddEventSheetView(day: day ,isSheetShowing: $isSheetShowing)
         }
     }
     
