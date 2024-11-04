@@ -8,7 +8,6 @@ import SwiftUI
 
 struct CreateItineraryView: View {
     @ObservedObject var textFieldObserver = TextFieldObserver(delay: .milliseconds(500)) // Set debounce delay
-    
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm: EditItineraryViewModel
     @FocusState var isSearching
@@ -30,7 +29,7 @@ struct CreateItineraryView: View {
                         .font(.footnote)
                         .foregroundStyle(.gray)
                 } else if vm.itinerary.cities.count == 0 {
-                    Text("Add another country if you'd like, or set your trip dates")
+                    Text("Add another country if you'd like, or set your arrival/departure dates")
                         .font(.footnote)
                         .foregroundStyle(.gray)
                 }
@@ -73,7 +72,29 @@ struct CreateItineraryView: View {
                 if vm.itinerary.countries.count != 0 {
                     Button(action: {
                         do {
-                            vm.itinerary.name = vm.itinerary.countriesArray.map{$0.countryName}.joined(separator: ", ") + " Trip"
+                            vm.generateItineraryName()
+                            
+                            for i in 0..<vm.calculateTripDuration() {
+                                let day = DayPlan(context: vm.viewContext) // Pass the managed object context here
+
+                                // Use Calendar to add days to arrivalDate
+                                if let adjustedDate = Calendar.current.date(byAdding: .day, value: i, to: vm.itinerary.arrivalDate) {
+                                    day.date = adjustedDate
+                                    vm.itinerary.addDay(day)
+                                    
+                                } else {
+                                    print("Error calculating date for day \(i)")
+                                }
+                            }
+                            
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "MM/dd/yyyy"
+
+                            print("Current days in itinerary: \(vm.itinerary.daysArray.map { dateFormatter.string(from: $0.date) })")
+
+
+                                                        
+                            
                             try vm.save()
                             dismiss()
                         } catch {
@@ -108,6 +129,14 @@ struct CreateItineraryView: View {
         }
     }
 }
+
+extension Calendar {
+    func numberOfDaysBetween(from startDate: Date, to endDate: Date) -> Int {
+        let components = dateComponents([.day], from: startDate, to: endDate)
+        return components.day! + 1
+    }
+}
+
 
 // Preview
 struct CreateItineraryView_Previews: PreviewProvider {

@@ -8,8 +8,6 @@
 import Foundation
 import CoreData
 
-import Foundation
-import CoreData
 
 final class Itinerary: NSManagedObject, Identifiable {
     
@@ -31,7 +29,19 @@ final class Itinerary: NSManagedObject, Identifiable {
         departureDate = Date.now
     }
     
+    
     // Add and remove methods (use NSSet for adding/removing relationships)
+    func addDay(_ dayPlan: DayPlan) {
+        self.mutableSetValue(forKey: "days").add(dayPlan)
+        dayPlan.itinerary = self
+    }
+    
+    func removeDay(_ dayPlan: DayPlan) {
+        self.mutableSetValue(forKey: "days").remove(dayPlan)
+        dayPlan.itinerary = nil
+
+    }
+    
     func addCity(_ city: City) {
         self.mutableSetValue(forKey: "cities").add(city)
         city.itinerary = self
@@ -60,6 +70,10 @@ final class Itinerary: NSManagedObject, Identifiable {
     }
     
     // Computed properties to access cities and countries as Swift arrays
+    var daysArray: [DayPlan] {
+        return (days.allObjects as? [DayPlan] ?? []).sorted { $0.date < $1.date }
+    }
+    
     var citiesArray: [City] {
         return cities.allObjects as? [City] ?? []
     }
@@ -67,6 +81,9 @@ final class Itinerary: NSManagedObject, Identifiable {
     var countriesArray: [Country] {
         return countries.allObjects as? [Country] ?? []
     }
+    
+    
+    
 }
 
 extension Itinerary {
@@ -81,6 +98,8 @@ extension Itinerary {
         ]
         return request
     }
+    
+    
 }
 
 
@@ -97,6 +116,8 @@ extension Itinerary {
             let itinerary = Itinerary(context: context)
             itinerary.name = "France Travel Itinerary"
             itinerary.saved = false
+            itinerary.arrivalDate = Date.now
+            itinerary.departureDate = Calendar.current.date(byAdding: .day, value: 7, to: itinerary.arrivalDate) ?? Date.now
             
             // Create unique country and city instances for each itinerary
             let country = Country(context: context)
@@ -107,9 +128,23 @@ extension Itinerary {
             city.cityName = "Paris"
             itinerary.addCity(city) // Using the addCity method
             
+            for i in 0..<7 {
+                let day = DayPlan(context: context) // Pass the managed object context here
+
+                // Use Calendar to add days to arrivalDate
+                if let adjustedDate = Calendar.current.date(byAdding: .day, value: i, to: itinerary.arrivalDate) {
+                    day.date = adjustedDate
+                    itinerary.addDay(day)
+                    
+                } else {
+                    print("Error calculating date for day \(i)")
+                }
+            }
+            
             // Append to the itineraries array
             itineraries.append(itinerary)
         }
+        
         
         return itineraries
     }

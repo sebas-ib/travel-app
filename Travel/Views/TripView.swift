@@ -22,8 +22,9 @@ struct TripView: View {
                         
                         Spacer()
                         
-                        DayPlanView(name: formatDate(date: Calendar.current.date(byAdding: .day, value: 0,to: itinerary.arrivalDate) ?? Date.now))
-                        
+                        ForEach(itinerary.daysArray){ day in
+                            DayPlanView(day: day)
+                        }
                         
                     }
                     .padding(.top, 65)
@@ -59,7 +60,6 @@ private extension TripView {
         } catch {
             print(error)
         }
-        
     }
     
 }

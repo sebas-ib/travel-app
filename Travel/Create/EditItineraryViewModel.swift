@@ -35,4 +35,12 @@ final class EditItineraryViewModel: ObservableObject {
             itinerary = Itinerary(context: context)
         }
     }
+    
+    func generateItineraryName() {
+        itinerary.name = itinerary.countriesArray.map { $0.countryName }.joined(separator: ", ") + " Trip"
+    }
+
+    func calculateTripDuration() -> Int {
+        return Calendar.current.numberOfDaysBetween(from: itinerary.arrivalDate, to: itinerary.departureDate)
+    }
 }

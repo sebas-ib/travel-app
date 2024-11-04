@@ -33,9 +33,9 @@ struct SelectCountry: View {
 struct SelectCountry_Preview: PreviewProvider {
     static var previews: some View {
         NavigationStack{
-            let preview = ItinerariesProvider.shared
-            
-            @State var location: String = "France"
+//            let preview = ItinerariesProvider.shared
+//
+//            @State var location: String = "France"
 
 //            SelectCountry(place: $location)
         }

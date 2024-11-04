@@ -45,7 +45,7 @@ struct SelectedCity: View {
 struct SelectedCity_Preview: PreviewProvider {
     static var previews: some View {
         NavigationStack{
-            let preview = ItinerariesProvider.shared
+//            let preview = ItinerariesProvider.shared
             
 //            @State var location: Country
             

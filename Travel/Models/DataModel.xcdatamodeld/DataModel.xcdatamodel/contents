@@ -9,7 +9,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Itinerary" inverseName="countries" inverseEntity="Itinerary"/>
     </entity>
-    <entity name="Days" representedClassName="Days" syncable="YES">
+    <entity name="DayPlan" representedClassName=".DayPlan" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dayPlan" optional="YES" attributeType="String"/>
         <relationship name="itinerary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Itinerary" inverseName="days" inverseEntity="Itinerary"/>
@@ -21,6 +21,6 @@
         <attribute name="saved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="cities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="itinerary" inverseEntity="City"/>
         <relationship name="countries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Country" inverseName="itinerary" inverseEntity="Country"/>
-        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Days" inverseName="itinerary" inverseEntity="Days"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DayPlan" inverseName="itinerary" inverseEntity="DayPlan"/>
     </entity>
 </model>

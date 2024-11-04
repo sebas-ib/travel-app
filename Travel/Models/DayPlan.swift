@@ -1,5 +1,5 @@
 //
-//  Days.swift
+//  Day.swift
 //  Travel
 //
 //  Created by Sebastian Ibarra on 11/03/24.
@@ -7,7 +7,7 @@
 import Foundation
 import CoreData
 
-final class Days: NSManagedObject, Identifiable {
+final class DayPlan: NSManagedObject, Identifiable {
     
     @NSManaged var date: Date
     @NSManaged var dayPlan: String
@@ -19,5 +19,7 @@ final class Days: NSManagedObject, Identifiable {
     override func awakeFromInsert() {
         super.awakeFromInsert()
         dayPlan = ""  // Optional default value
+        date = Date.now
+
     }
 }
