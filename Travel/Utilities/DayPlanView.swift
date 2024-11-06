@@ -21,7 +21,7 @@ struct DayPlanView: View {
                 HStack {
                     Text(formatDate(day.date))
                         .font(.title)
-                        .bold()
+                    
                     Spacer()
                     
                     Button {
@@ -49,15 +49,16 @@ struct DayPlanView: View {
                         }
                         
                         
-                        HStack(alignment: .center) {
                             
                             Button {
                                 isSheetShowing = true
                             } label: {
-                                Image(systemName: "plus")
-                                Text("Add an event")
+                                HStack(alignment: .center, spacing: 2) {
+                                    Image(systemName: "plus")
+                                    Text("Add an event")
+                                }
                             }
-                        }
+                            .foregroundStyle(Color("AppColor"))
                         
                         Rectangle()
                             .frame(height: 1.0)
@@ -71,7 +72,8 @@ struct DayPlanView: View {
             }
             .padding(25)
             .clipped()
-            .background(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 1))
+            .background(RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.black.opacity(0.35), lineWidth: 1))
             .padding(.horizontal, 5)
             
         }

@@ -16,51 +16,83 @@ struct AddEventSheetView: View {
     @State var desc: String = ""
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack{
             Text("New Event")
                 .font(.title2)
                 .bold()
-                .padding(.bottom, 10)
             
-            TextField("Event e.g. Guided Tour, Arriving at Hotel", text: $name)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray.opacity(0.4), lineWidth: 1)
-                )
-            
-            TextField("Description e.g. \"Pick up passes at museum entrance\" ", text: $desc)
-                .padding().padding(.bottom, 50)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray.opacity(0.4), lineWidth: 1)
-                )
+            VStack(alignment: .leading) {
+                Text("Event Name")
+                    .font(.caption2)
+                    .bold()
+                
+                
+                TextField("Guided Tour, Arriving at Hotel", text: $name)
+                    .padding(5.0)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.black.opacity(0.35), lineWidth: 1)
+                    ).padding(.bottom,4)
+                
+                Text("Event Description")
+                    .font(.caption2)
+                    .bold()
+                ZStack{
+                    TextEditor(text: $desc)
+                        .background(Color(.systemGray6))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.black.opacity(0.35), lineWidth: 1)
+                        )
+                    if desc == "" {
+                        VStack(alignment: .leading){
+                            HStack{
+                                Text("  - Explore Museum\n  - Check out Restaurant")
+                                    .foregroundStyle(Color.black.opacity(0.20))
+                                Spacer()
+                            }.padding(.leading, 4.25)
+                            
+                            Spacer()
+                        }
+                        .padding(.top, 8.5)
+                    }
+                }
+            }
             
             // Add Event Button
-            Button(action: {
-                let event = EventDetails(context: moc)
-                
-                event.desc = desc
-                event.name = name
-                
-                day.addEvent(event)
-                
-                saveContext()
-                
-                isSheetShowing = false
-            }) {
+            if name != "" {
+                Button(action: {
+                    let event = EventDetails(context: moc)
+                    
+                    event.desc = desc
+                    event.name = name
+                    
+                    day.addEvent(event)
+                    
+                    saveContext()
+                    
+                    isSheetShowing = false
+                }) {
+                    Text("Add Event")
+                        .font(.title3)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 50.0)
+                        .padding(.vertical, 15.0)
+                        .background(Color("AppColor"))
+                        .cornerRadius(30)
+                }.padding()
+            } else {
                 Text("Add Event")
                     .font(.title3)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 50.0)
                     .padding(.vertical, 15.0)
-                    .background(Color("AppColor"))
+                    .background(Color.gray)
                     .cornerRadius(30)
+                    .padding()
             }
+
         }
         .padding()
     }
@@ -75,3 +107,4 @@ struct AddEventSheetView: View {
         }
     }
 }
+

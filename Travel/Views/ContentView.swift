@@ -76,9 +76,9 @@ struct ContentView_Previews: PreviewProvider {
                 Itinerary.makePreview(count: 10, in: preview.viewContext)
             }
         
-//        let emptyPreview = ItinerariesProvider.shared
-//        ContentView(provider: preview)
-//            .environment(\.managedObjectContext,preview.viewContext)
-//            .previewDisplayName("Itineraries with No Data")
+        let emptyPreview = ItinerariesProvider.shared
+        ContentView(provider: preview)
+            .environment(\.managedObjectContext,preview.viewContext)
+            .previewDisplayName("Itineraries with No Data")
     }
 }
