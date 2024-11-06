@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct CreateItineraryView: View {
-    @ObservedObject var textFieldObserver = TextFieldObserver(delay: .milliseconds(500)) // Set debounce delay
+    @ObservedObject var textFieldObserver = TextFieldObserver(delay: .milliseconds(500))
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm: EditItineraryViewModel
     @FocusState var isSearching
@@ -75,9 +75,8 @@ struct CreateItineraryView: View {
                             vm.generateItineraryName()
                             
                             for i in 0..<vm.calculateTripDuration() {
-                                let day = DayPlan(context: vm.viewContext) // Pass the managed object context here
+                                let day = DayPlan(context: vm.viewContext)
 
-                                // Use Calendar to add days to arrivalDate
                                 if let adjustedDate = Calendar.current.date(byAdding: .day, value: i, to: vm.itinerary.arrivalDate) {
                                     day.date = adjustedDate
                                     vm.itinerary.addDay(day)
@@ -138,13 +137,11 @@ extension Calendar {
 }
 
 
-// Preview
 struct CreateItineraryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             let preview = ItinerariesProvider.shared
             
-            // Pass a preview context for the view model
             CreateItineraryView(vm: .init(provider: preview))
                 .environment(\.managedObjectContext, preview.viewContext)
         }

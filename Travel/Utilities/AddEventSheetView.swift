@@ -22,42 +22,8 @@ struct AddEventSheetView: View {
                 .bold()
             
             VStack(alignment: .leading) {
-                Text("Event Name")
-                    .font(.caption2)
-                    .bold()
-                
-                
-                TextField("Guided Tour, Arriving at Hotel", text: $name)
-                    .padding(5.0)
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.black.opacity(0.35), lineWidth: 1)
-                    ).padding(.bottom,4)
-                
-                Text("Event Description")
-                    .font(.caption2)
-                    .bold()
-                ZStack{
-                    TextEditor(text: $desc)
-                        .background(Color(.systemGray6))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.black.opacity(0.35), lineWidth: 1)
-                        )
-                    if desc == "" {
-                        VStack(alignment: .leading){
-                            HStack{
-                                Text("  - Explore Museum\n  - Check out Restaurant")
-                                    .foregroundStyle(Color.black.opacity(0.20))
-                                Spacer()
-                            }.padding(.leading, 4.25)
-                            
-                            Spacer()
-                        }
-                        .padding(.top, 8.5)
-                    }
-                }
+                FormTextField(title: "Event Name", text: $name, placeholder: "Guided Tour, Arriving at Hotel")
+                FormTextEditor(title: "Event Description", text: $desc, placeholder: "- Explore Museum\n- Check out Restaurant")
             }
             
             // Add Event Button
@@ -73,6 +39,7 @@ struct AddEventSheetView: View {
                     saveContext()
                     
                     isSheetShowing = false
+                    
                 }) {
                     Text("Add Event")
                         .font(.title3)
@@ -92,7 +59,7 @@ struct AddEventSheetView: View {
                     .cornerRadius(30)
                     .padding()
             }
-
+            
         }
         .padding()
     }
@@ -108,3 +75,66 @@ struct AddEventSheetView: View {
     }
 }
 
+struct FormTextField: View{
+    let title: String
+    @Binding var text: String
+    var placeholder: String
+    
+    var body: some View {
+        
+        Text(title)
+            .font(.caption2)
+            .bold()
+        
+        TextField(placeholder, text: $text)
+            .padding(5.0)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.black.opacity(0.35), lineWidth: 1)
+            ).padding(.bottom,4)
+    }
+}
+
+struct FormTextEditor: View {
+    let title: String
+    @Binding var text: String
+    var placeholder: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.caption2)
+                .bold()
+            
+            ZStack(alignment: .topLeading) {
+                TextEditor(text: $text)
+                    .background(Color(.systemGray6))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.black.opacity(0.35), lineWidth: 1)
+                    )
+                
+                if text.isEmpty {
+                    Text(placeholder)
+                        .foregroundColor(Color("Placeholder")).padding(.top,8)
+                            .padding(.leading,5)
+                }
+            }
+        }
+    }
+}
+
+
+
+struct AddEventSheetView_Previews: PreviewProvider {
+    @State static var isSheetShowing = true
+    
+    static var previews: some View {
+        let context = ItinerariesProvider.shared.viewContext
+        let day = DayPlan(context: context) // Mock DayPlan object
+        
+        AddEventSheetView(day: day, isSheetShowing: $isSheetShowing)
+            .environment(\.managedObjectContext, context)
+    }
+}

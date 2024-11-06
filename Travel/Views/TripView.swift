@@ -19,17 +19,13 @@ struct TripView: View {
                 
                 ScrollView(.vertical) {
                     VStack(alignment: .leading) {
-                        
-                        Spacer()
-                        
                         ForEach(itinerary.daysArray){ day in
-                            DayPlanView(day: day)
+                                DayPlanView(day: day)
                         }
-                        
                     }
-                    .padding(.top, 65)
                     .scrollIndicators(.hidden)
                 }
+                .safeAreaPadding(.top,80)
                 .navigationBarBackButtonHidden(true)
                 
                 NavBar(topNavBar: true, search: false, settings: false, back: true, title: "Itinerary")

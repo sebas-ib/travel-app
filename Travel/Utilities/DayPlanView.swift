@@ -73,7 +73,7 @@ struct DayPlanView: View {
             .padding(25)
             .clipped()
             .background(RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.black.opacity(0.35), lineWidth: 1))
+                .stroke(Color("Placeholder"), lineWidth: 1))
             .padding(.horizontal, 5)
             
         }

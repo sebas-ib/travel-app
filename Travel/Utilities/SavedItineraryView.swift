@@ -21,10 +21,10 @@ struct SavedItineraryView: View {
             .padding()
             Spacer()
         }
-        .background(
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .stroke(Color.black.opacity(0.35), lineWidth: 1)
-        )
+//        .background(
+//            RoundedRectangle(cornerRadius: 15, style: .continuous)
+//                .stroke(Color.black.opacity(0.35), lineWidth: 1)
+//        )
     }
     
     
