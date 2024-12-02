@@ -4,8 +4,7 @@
 //
 //  Created by Sebastian Ibarra on 10/13/24.
 //
-//  This code is a template that comes standard with new Swift projects in Xcode. 
-//  It gives basic structure for creating UI tests, including setup, teardown, 
+//  Gives basic structure for creating UI tests, including setup, teardown, 
 //  example test methods, and performance testing. I plan on implementing my own tests in the future
 
 import XCTest
