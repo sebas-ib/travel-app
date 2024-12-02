@@ -4,8 +4,7 @@
 //
 //  Created by Sebastian Ibarra on 10/13/24.
 //
-//  This code is a template automatically provided by Xcode when creating a new 
-//  Swift project. Sets up a basic framework for launch tests, including 
+//  Sets up a basic framework for launch tests, including 
 //  application launch verification and screenshot capturing. I plan to customize it
 //  to perform additional checks during the launch phase of the application.
 
