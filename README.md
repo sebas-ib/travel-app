@@ -36,7 +36,7 @@ This project integrates itinerary management, destination exploration, and trave
 3. Build and run the app on a simulator or a connected iOS device.
 
 ## Directory Structure
-
+```bash
 .
 ├── Travel/           # Main iOS app source files
 ├── TravelTests/      # Unit testing framework
