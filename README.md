@@ -1,7 +1,4 @@
 # Travel App
-
-**Languages Used:** Swift (93.4%), Python (6.6%)
-
 ## Overview
 
 The **Travel App** is a comprehensive iOS application designed to streamline travel planning and enhance the user experience. It combines a robust Swift-based frontend with Python-powered backend functionalities to provide seamless interactions and feature-rich capabilities.
@@ -23,7 +20,7 @@ This project integrates itinerary management, destination exploration, and trave
 
 ### Prerequisites
 - **Xcode**: Install the latest version from the Mac App Store.
-- **Python**: Ensure Python 3.x is installed for running deployment scripts.
+- **Python**: Ensure Python 3.x is installed for running scripts.
 
 ### Steps
 1. Clone the repository:
@@ -41,5 +38,5 @@ This project integrates itinerary management, destination exploration, and trave
 ├── Travel/           # Main iOS app source files
 ├── TravelTests/      # Unit testing framework
 ├── TravelUITests/    # UI testing files
-├── uploadScript/     # Deployment and automation scripts
+├── uploadScript/     # Python scripts
 └── README.md         # Project documentation
