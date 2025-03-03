@@ -1,9 +1,9 @@
 # Travel App
 ## Overview
 
-The **Travel App** is a comprehensive iOS application designed to streamline travel planning and enhance the user experience. It combines a robust Swift-based frontend with Python-powered backend functionalities to provide seamless interactions and feature-rich capabilities.
+The **Travel App** is an iOS application designed to help with travel planning!
 
-This project integrates itinerary management, destination exploration, and travel-related data visualization. It supports automated backend operations through Python scripts, ensuring efficient deployment and scalability.
+This project integrates itinerary management, destination exploration, and travel-related data visualization. 
 
 ## Features
 
