@@ -45,7 +45,7 @@ struct NavBar: View {
                         
                         if title != "" {
                             Text(title)
-                                .font(.title)
+                                .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color("TextColor"))
                             Spacer()

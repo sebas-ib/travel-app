@@ -43,7 +43,7 @@ struct RemoveLocation: View {
 struct RemoveLocation_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            let preview = ItinerariesProvider.shared
+//            let preview = ItinerariesProvider.shared
             
             // Pass a preview context for the view model
 //            RemoveLocation(vm: .init(provider: preview))

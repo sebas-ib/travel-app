@@ -18,7 +18,7 @@ class TextFieldObserver: ObservableObject {
     
     @Published var isSearching: Bool = false
     
-    init(delay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(500)) {
+    init(delay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(250)) {
         // Debounce logic: wait for `delay` interval after typing stops
         cancellable = $searchText
             .debounce(for: delay, scheduler: DispatchQueue.main)

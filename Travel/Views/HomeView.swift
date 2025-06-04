@@ -9,42 +9,74 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct HomeView: View {
-    @State private var text = ""
-    
     @FetchRequest(fetchRequest: Itinerary.all()) private var itineraries
+    
+    var currentItineraries: [Itinerary] {
+        itineraries.filter {
+            (Calendar.current.isDate($0.arrivalDate, inSameDayAs: Date.now) ||
+            Calendar.current.compare($0.arrivalDate, to: Date.now, toGranularity: .day) == .orderedAscending) && Calendar.current.compare($0.departureDate, to: Date.now, toGranularity: .day) != .orderedAscending
+        }
+    }
+    
+    var pastItineraries: [Itinerary] {
+        itineraries.filter {
+            !((Calendar.current.isDate($0.arrivalDate, inSameDayAs: Date.now) ||
+            Calendar.current.compare($0.arrivalDate, to: Date.now, toGranularity: .day) == .orderedAscending) && Calendar.current.compare($0.departureDate, to: Date.now, toGranularity: .day) != .orderedAscending)
+        }
+    }
     
     var body: some View {
         ZStack {
-            // Background Color
             Color("BackgroundColor")
                 .ignoresSafeArea()
             
-            // Main Content
+            
             VStack {
-                ScrollView(.vertical) {
-                    HStack {
-                        Spacer()
-                        VStack(alignment: .leading, spacing: 15.0) {
-                            ForEach(itineraries) { itinerary in
+                List {
+                    if !currentItineraries.isEmpty {
+                        Section(header: Text("Current").font(.caption).bold()) {
+                            ForEach(currentItineraries) { itinerary in
                                 placeNavigationLink(itinerary: itinerary)
                             }
                         }
-                        Spacer()
+                    }
+                    
+                    if !pastItineraries.isEmpty {
+                        Section(header: Text("Upcoming").font(.caption).bold()) {
+                            ForEach(pastItineraries) { itinerary in
+                                placeNavigationLink(itinerary: itinerary)
+                            }
+                        }
                     }
                 }
-                .safeAreaPadding(.top, 75)
-                .safeAreaPadding(.bottom, 30)
-                .scrollIndicators(.hidden)
+                .listStyle(.grouped)
             }
-
-            // Navigation Bar
-            NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Your Itineraries")
+            .safeAreaPadding(.top, 70)
+            //            ScrollView(.vertical) {
+            //                VStack(alignment: .leading, spacing: 15.0) {
+            //                    ForEach(itineraries) { itinerary in
+            //                        if !(Calendar.current.compare(itinerary.departureDate, to: Date.now, toGranularity: .day) == .orderedAscending) {
+            //                            placeNavigationLink(itinerary: itinerary)
+            //                        }
+            //                    }
+            //                }.padding(.horizontal, 10.0)
+            //            }
+            //            .safeAreaPadding(.top, 75)
+            //            .safeAreaPadding(.bottom, 30)
+            //            .scrollIndicators(.hidden)
+            
+            NavBar(topNavBar: true, search: false, settings: true, back: false, title: "Your Trips")
         }
-}
+    }
     
     func placeNavigationLink(itinerary: Itinerary) -> some View {
         NavigationLink(destination: TripView(itinerary: itinerary)) {
-            SmallPlaceView(itinerary: itinerary)
+            SavedItineraryView(itinerary: itinerary)
+                .contentShape(Rectangle())
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
+
+
+
