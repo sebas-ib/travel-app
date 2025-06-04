@@ -1,3 +1,4 @@
+
 # Travel App
 ## Overview
 
@@ -27,10 +28,13 @@ This project integrates itinerary management, destination exploration, and trave
    ```bash
    git clone https://github.com/sebas-ib/travel-app.git
    cd travel-app
-2. Open the project in Xcode:
+```
+1. Open the project in Xcode:
    ```bash
    open Travel.xcodeproj
-3. Build and run the app on a simulator or a connected iOS device.
+```
+
+1. Build and run the app on a simulator or a connected iOS device.
 
 ## Directory Structure
 ```bash
@@ -40,3 +44,13 @@ This project integrates itinerary management, destination exploration, and trave
 ├── TravelUITests/    # UI testing files
 ├── uploadScript/     # Python scripts
 └── README.md         # Project documentation
+```
+
+
+## Screenshots
+### Itinerary Creation
+![Itinerary Management](Images/IMG_1800.png)
+
+### View Trips
+![Destination Explorer](Images/IMG_1801.png)### Trip Itinerary Editor
+![Destination Explorer](Images/IMG_1803.png)
