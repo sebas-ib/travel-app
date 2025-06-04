@@ -52,5 +52,7 @@ This project integrates itinerary management, destination exploration, and trave
 ![Itinerary Management](Images/IMG_1800.png)
 
 ### View Trips
-![Destination Explorer](Images/IMG_1801.png)### Trip Itinerary Editor
+![Destination Explorer](Images/IMG_1801.png)
+
+### Trip Itinerary Editor
 ![Destination Explorer](Images/IMG_1803.png)
